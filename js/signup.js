@@ -39,7 +39,7 @@ function validEmail() {
 
 function validName() {
     var name=document.forms['signup']['name'].value;
-      pat=/[^0-9]+/;
+      pat=/^[a-zA-Z]*$/;
         if (name.match(pat)) {
               document.getElementById('name').style.visibility = "hidden";
                   return true;
@@ -52,7 +52,7 @@ function validName() {
             else {
                   document.getElementById('name').innerText = "*Name contains only alphabets.";
                       document.getElementById('name').style.visibility = "visible";
-                          return false
+                          return false;
                               }
 }
 
