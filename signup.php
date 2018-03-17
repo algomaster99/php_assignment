@@ -1,5 +1,5 @@
 <?php
-  $a = $b = $c = $d = $e = $f = $g = $h = false; //create individual functions of each and assign variable. Do Not return.
+  $a = $b = $c = $d = $e = $f = $g = $h = false;
   $name = $email = $pass = $cnfpass = $dob = $gender = $mobile = "";
   $nameErr = $passErr = $cnfpassErr = $dobErr = $genderErr = $mobileErr = $emailErr = "";
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -138,8 +138,8 @@
             <option value="M">Male</option>
             <option value="F">Female</option>
             <option value="O">Other</option>
-           </select><span id="gender"><?php echo $genderErr; ?></span><br /><br />
-           <button type="submit">Submit</button>
+            </select><span id="gender"><?php echo $genderErr; ?></span><a href="login.php">Already Registered?</a><br /><br />
+            <button type="submit">Submit</button>
 </form>
 </body>
 </html>
