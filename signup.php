@@ -23,7 +23,7 @@
     }
     else {
       $email = modify($_POST["email"]);
-      if (!preg_match("/[a-z0-9_\.]+[a-z]+[0-9]*@[a-z]+.(com|in|co\.in|org.in|iitr\.ac\.in)/", $email)) {
+      if (!preg_match("/[a-z0-9_\.]+[a-z]*[0-9]*@[a-z]+.(com|in|co\.in|org.in|iitr\.ac\.in)/", $email)) {
         $emailErr = "Please enter email id in valid format";
         $b = false;
       }
@@ -136,8 +136,8 @@
 		Full Name: <input type="text" name="name" value="<?php echo $name; ?>" onblur="validName()"><span id="name"><?php echo $nameErr; ?></span><br /><br />
 		E-mail ID: <input type="text" name="email" value="<?php echo $email; ?>" onkeyup="available(this.value);"><span id="email"><?php echo $emailErr; ?></span><br /><br />
     Mobile No: <input type="text" name="mobile" value="<?php echo $mobile; ?>"><span id="mobile"><?php echo $mobileErr; ?></span><br /><br />
-		Password: <input type="text" name="pass" value="<?php echo $pass; ?>"><span id="pass"><?php echo $passErr; ?></span><br /><br />
-		Confirm Password: <input type="text" name="cnfpass" value="<?php echo $cnfpass; ?>"><span id="cnfpass"><?php echo $cnfpassErr; ?></span><br /><br />
+		Password: <input type="password" name="pass" value="<?php echo $pass; ?>"><span id="pass"><?php echo $passErr; ?></span><br /><br />
+		Confirm Password: <input type="password" name="cnfpass" value="<?php echo $cnfpass; ?>"><span id="cnfpass"><?php echo $cnfpassErr; ?></span><br /><br />
 		DOB: <input type="date" name="dob" value="<?php echo $dob; ?>"><span id="dob"><?php echo $dobErr; ?></span><br /><br />
 		Gender: <select name="gender">
             <option value="" selected>&lt;Select&gt;</option>

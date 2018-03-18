@@ -20,9 +20,13 @@
       echo "$name posted $comment on $time <br />";
     }
   }
+  else {
+    echo "No posts yet :(";
+  }
   }
   else {
     header("location:index.php");
+  
   }
 ?>
 

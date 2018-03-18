@@ -1,4 +1,5 @@
 <?php
+  $postErr = "";
   include("config.php");
   session_start();
   if (isset($_SESSION["username"])){
@@ -74,6 +75,10 @@
      $post = $_POST["comment"];
      $sql = "INSERT INTO aman_post values('$name','$post', NOW())";
      $result = $conn->query($sql);
+     header("location:feed.php");
+   }
+   else {
+     $postErr = "Please fill in something!";
    }
  }
 ?>
@@ -91,7 +96,7 @@
       <input type="button" onclick="location.href = 'feed.php';" value="Feed" /><br />
       <div id="comment">
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-          <textarea name="comment"></textarea><br />
+          <textarea name="comment"></textarea><span><?php echo $postErr; ?></span><br />
           <button type="submit" name="post">POST</button>
         </form>
       </div>
