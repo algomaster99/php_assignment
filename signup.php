@@ -87,7 +87,13 @@
     }
     else {
       $dob = modify($_POST["dob"]);
-      $f = true;
+      if ($dob>date('Y-m-d', time())){
+        $dobErr = "Enter a valid age";
+        $f = false;
+      }
+      else {
+        $f = true;
+      }
     }
     if ($_POST["gender"] == ""){
       $genderErr = "Please select a value";
@@ -111,7 +117,7 @@
    $query = "INSERT INTO aman_user(name, email, mobile, password, dob, gender) "."VALUES('".$name."','".$email."',".$mobile.",'".md5($pass)."','".$dob."','".$gender."')";
 
    if ($conn->query($query) === TRUE) {
-         echo "New record created successfully";
+         header("location:login.php");
    } else {
          echo "Error: " . $query . "<br>" . $conn->error;
    }
@@ -125,10 +131,10 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 </head>
 <body>
-  <script type="text/javascript" src="js/signup.js"></script>
+  <script type="text/javascript" src="js/signup.js" async></script>
 	<form name="signup" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 		Full Name: <input type="text" name="name" value="<?php echo $name; ?>" onblur="validName()"><span id="name"><?php echo $nameErr; ?></span><br /><br />
-		E-mail ID: <input type="text" name="email" value="<?php echo $email; ?>" onblur="validEmail()"><span id="email"><?php echo $emailErr; ?></span><br /><br />
+		E-mail ID: <input type="text" name="email" value="<?php echo $email; ?>" onkeyup="available(this.value);"><span id="email"><?php echo $emailErr; ?></span><br /><br />
     Mobile No: <input type="text" name="mobile" value="<?php echo $mobile; ?>"><span id="mobile"><?php echo $mobileErr; ?></span><br /><br />
 		Password: <input type="text" name="pass" value="<?php echo $pass; ?>"><span id="pass"><?php echo $passErr; ?></span><br /><br />
 		Confirm Password: <input type="text" name="cnfpass" value="<?php echo $cnfpass; ?>"><span id="cnfpass"><?php echo $cnfpassErr; ?></span><br /><br />

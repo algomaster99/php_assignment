@@ -1,4 +1,20 @@
 var pat;
+function available(str){
+    if (str.length == 0){
+           document.getElementById("email").innerText = "";
+            }
+      else {
+            var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function(){
+                      if (this.readyState == 4 && this.status == 200){
+                              document.getElementById("email").innerText = this.responseText;
+                                  }
+                        };
+                  xmlhttp.open("GET", "./available.php?q="+str, true);
+                    xmlhttp.send();
+      }
+}
+
 function validContact() {
     var contact=document.forms['signup']['mobile'].value;
       pat = /^\d{10}$/;
@@ -20,7 +36,7 @@ function validContact() {
 
 function validEmail() {
     var email=document.forms['signup']['email'].value;
-      pat = /[a-z0-9_\.]+[a-z]+[0-9]*@[a-z]+.(com|in|co\.in|org.in|iitr\.ac\.in)/;
+      pat = /[a-z0-9_\.]*[a-z]+[0-9]*@[a-z]+.(com|in|co\.in|org.in|iitr\.ac\.in)/;
         if (email.match(pat)){
               document.getElementById('email').style.visibility = "hidden";
                   return true;
@@ -89,3 +105,4 @@ function validPassword() {
                             return false;
                               }
 }
+

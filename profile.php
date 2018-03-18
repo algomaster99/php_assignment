@@ -60,6 +60,21 @@
                   $image2 = $row['cover_pic'];
                      }
 
+ } $sql = "SELECT name from aman_user where email ='$username'";
+    $result = $conn->query($sql);
+
+        if ($result->num_rows > 0){
+                while ($row = $result->fetch_assoc()) {
+                          $name = $row["name"];
+                                }
+        }
+
+ if (isset($_POST["post"])){
+   if (!empty($_POST["comment"])){
+     $post = $_POST["comment"];
+     $sql = "INSERT INTO aman_post values('$name','$post', NOW())";
+     $result = $conn->query($sql);
+   }
  }
 ?>
 <!DOCTYPE html>
@@ -73,6 +88,13 @@
       <input type="button" onclick="location.href = 'details.php';" value="Upload Details" />
       <input type="button" onclick="location.href = 'changepass.php';" value="Change Password" />
       <input type="button" onclick="location.href = 'logout.php?logout=1';" value="Log Out" />
+      <input type="button" onclick="location.href = 'feed.php';" value="Feed" /><br />
+      <div id="comment">
+        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+          <textarea name="comment"></textarea><br />
+          <button type="submit" name="post">POST</button>
+        </form>
+      </div>
     </form>
   </body>
 </html>

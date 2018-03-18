@@ -38,7 +38,7 @@
     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
       Branch: <input type="text" name="branch" value="<?php echo $branch; ?>"/><span><?php echo $branchErr; ?></span><br />
       Interests: <textarea name="interests" value="<?php echo $interest; ?>"></textarea><span><?php echo $interestErr; ?></span><br />
-      <button type="submit">Submit!</button>
+      <button type="submit">Submit!</button><a href="profile.php">Go Back</a>
     </form>
   </body>
 </html>
