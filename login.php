@@ -67,6 +67,7 @@
   <body>
       <script type="text/javascript" src="js/login.js"></script>
       <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+          Profile: <img src="#" /><br />
           E-mail ID (Username): <input type="text" name="username" /><span id="username"><?php echo $nameErr; ?></span><br />
           Password: <input type="password" name="pass" /><span id="pass" /><?php echo $passErr; ?></span>
           <a href="signup.php">Not Registered Yet?</a><br />
